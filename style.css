@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Simonetta&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Simonetta', cursive;
+  /* background: linear-gradient(to right bottom, #62A8AC 40%, #CEE7E6 96%); */
+  background: linear-gradient( to right bottom,rgba(171, 35, 69, 0.829) 10%,  #191516 96%);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin:0;
+}
+
+h1{
+    color: white;
+    letter-spacing: 2px;
+}
+
+.music-container{
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px 0 rgba(233, 139, 139, 0.829);
+    display:flex;
+    padding: 20px 30px;
+    position: relative;
+    margin:100px;
+    z-index: 10;
+}
+
+.img-container{
+    position: relative;
+    width: 110px;
+}
+
+.img-container::after{
+    content: '';
+    background-color: white;
+    border-radius: 50%;
+    position:absolute;
+    bottom:100%;
+    left:50%;
+    width:10px;
+    height:10px;
+    transform: translate(-50%, 50%);
+}
+
+.img-container img{
+    border-radius: 50%;
+    height:110px;
+    object-fit: cover;
+    width:inherit;
+    position: absolute;
+    bottom:0;
+    left:0;
+    animation: rotate 10s linear infinite;
+
+    animation-play-state: paused;
+}
+
+/* _____added using JS__ */
+
+        /* __play class added using JS */
+        /* if the music container has play class then img container img */
+.music-container.play .img-container img{
+    animation-play-state: running;
+}
+
+/* _____________ */
+
+@keyframes rotate{
+    from{
+        transform: rotate(0deg)
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+.navigation{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    z-index:1;
+}
+
+.action-btn{
+    background-color: white;
+    border:0;
+    color: #dfdbdf;
+    font-size:20px;
+    cursor: pointer;
+    padding:10px;
+    margin: 0 20px;
+    outline:0;
+}
+
+.action-btn.action-btn-big{
+    color: #cdc2d0;
+    font-size: 30px;
+}
+
+.music-info{
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 15px 15px 0 0;
+    width: calc(100% - 40px);
+    padding: 10px 10px 10px 150px;
+    position:absolute;
+    top:0;
+    left:20px;
+    opacity: 0;
+    transform: translateY(0%);
+    transition: transform 0.3s ease-in, opacity 0.3s ease-in;
+    z-index: 0;
+}
+
+.music-container.play .music-info{
+    opacity:1;
+    transform: translateY(-100%);
+}
+
+.music-info h4{
+    margin:0;
+}
+
+.progress-container{
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    height: 4px;
+    width: 100%;
+}
+
+.progress{
+    background-color: #fe8daa;
+    border-radius: 5px;
+    height:100%;
+    width:0%; /*//--- Manipulated using JS  */
+    transition: width 0.1s linear;
+}
